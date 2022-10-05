@@ -8,6 +8,6 @@ class AppWindow : public wxFrame
 public:
 	AppWindow();
 
-
+	
 };
 

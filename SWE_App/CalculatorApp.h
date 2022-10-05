@@ -10,6 +10,6 @@ class CalculatorApp : public wxApp
 public:
 
 	virtual bool OnInit();
-
+	
 };
 
