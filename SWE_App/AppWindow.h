@@ -31,6 +31,18 @@ class AppWindow : public wxFrame
 
 	wxTextCtrl* Textbox = nullptr;
 
+	int Num1 = 0;
+	int Num2 = 0;
+	bool CurNum = true;
+
+	int Operator;
+	int Sum;
+	/*float SumRem;*/
+
+	void OnButtonClicked(wxCommandEvent& evt);
+
+	wxDECLARE_EVENT_TABLE();
+
 public:
 	AppWindow();
 
