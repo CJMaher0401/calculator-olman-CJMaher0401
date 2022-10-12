@@ -34,7 +34,7 @@ class AppWindow : public wxFrame
 	int Num1 = 0;
 	int Num2 = 0;
 	bool CurNum = true;
-
+	
 	int Operator;
 	int Sum;
 	/*float SumRem;*/
