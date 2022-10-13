@@ -37,7 +37,7 @@ class AppWindow : public wxFrame
 	
 	int Operator;
 	int Sum;
-	/*float SumRem;*/
+	float SumRem;
 
 	void OnButtonClicked(wxCommandEvent& evt);
 

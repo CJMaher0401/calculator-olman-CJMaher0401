@@ -1,6 +1,8 @@
 #include "AppWindow.h"
 #include <string>
 #include <cstring>
+#include <iomanip>
+#include <math.h>
 
 wxBEGIN_EVENT_TABLE(AppWindow, wxFrame)
 	EVT_BUTTON(0, OnButtonClicked)
@@ -234,8 +236,8 @@ void AppWindow::OnButtonClicked(wxCommandEvent& evt)
 		}
 		if (Operator == 4)
 		{
-			Sum = Num1 / Num2;
-			Textbox->AppendText(std::to_string(Sum));
+			SumRem = ceilf(((float)Num1 / (float)Num2) * 100) / 100;
+			Textbox->AppendText(std::to_string(SumRem));
 		}
 	}
 	if (evt.GetId() == 106)
