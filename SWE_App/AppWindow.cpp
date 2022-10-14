@@ -27,7 +27,6 @@ wxEND_EVENT_TABLE()
 AppWindow::AppWindow() : 
 	 wxFrame(nullptr, wxID_ANY, "Calculator", wxPoint(400, 200), wxSize(500,500) )
 {
-	 /*Zero = new wxButton(this, 0, "0", wxPoint(100, 350), wxSize(50, 50));*/
 	 Zero = ButtonFactory::CreateZeroButton(this);
 	 One = new wxButton(this, 1,"1", wxPoint(25,275), wxSize(50,50));
 	 Two = new wxButton(this, 2,"2", wxPoint(100,275), wxSize(50,50));
