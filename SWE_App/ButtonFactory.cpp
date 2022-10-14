@@ -3,12 +3,6 @@
 #include "CalculatorApp.h"
 #include "wx/wx.h"
 
-
-//void CreateZeroButton(wxFrame *window)
-//{
-//	wxButton* Zero = new wxButton (window, 0 , "0", wxPoint(100, 350), wxSize(50, 50));
-//}
-
 wxButton* ButtonFactory::CreateZeroButton(wxWindow *window)
 {
 	wxButton* Zero = new wxButton(window, 0, "0", wxPoint(100, 350), wxSize(50, 50));
@@ -108,41 +102,41 @@ wxButton* ButtonFactory::CreateCLEARButton(wxWindow *window)
 wxButton* ButtonFactory::CreatePLUSandMINButton(wxWindow *window)
 {
 	wxButton* PlusAndMin = new wxButton(window, 107, "+/-", wxPoint(275, 350), wxSize(50, 50));
-	return nullptr;
+	return PlusAndMin;
 }
 
 wxButton* ButtonFactory::CreateLPAREButton(wxWindow *window)
 {
 	wxButton* Lparetheses = new wxButton(window, 201, "(", wxPoint(275, 275), wxSize(50, 50));
-	return nullptr;
+	return Lparetheses;
 }
 
 wxButton* ButtonFactory::CreateRPAREButton(wxWindow *window)
 {
 	wxButton* Rparetheses = new wxButton(window, 202, ")", wxPoint(350, 275), wxSize(50, 50));
-	return nullptr;
+	return Rparetheses;
 }
 
 wxButton* ButtonFactory::CreateMODButton(wxWindow *window)
 {
 	wxButton* Mod = new wxButton(window, 203, "Mod", wxPoint(425, 125), wxSize(50, 50));
-	return nullptr;
+	return Mod;
 }
 
 wxButton* ButtonFactory::CreateSINButton(wxWindow *window)
 {
 	wxButton* Sin = new wxButton(window, 204, "Sin", wxPoint(425, 200), wxSize(50, 50));
-	return nullptr;
+	return Sin;
 }
 
 wxButton* ButtonFactory::CreateCOSButton(wxWindow *window)
 {
 	wxButton* Cos = new wxButton(window, 205, "Cos", wxPoint(425, 275), wxSize(50, 50));
-	return nullptr;
+	return Cos;
 }
 
 wxButton* ButtonFactory::CreateTANButton(wxWindow *window)
 {
 	wxButton* Tan = new wxButton(window, 206, "Tan", wxPoint(425, 350), wxSize(50, 50));
-	return nullptr;
+	return Tan;
 }
