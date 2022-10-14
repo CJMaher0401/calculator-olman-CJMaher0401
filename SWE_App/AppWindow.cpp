@@ -1,4 +1,5 @@
 #include "AppWindow.h"
+#include "ButtonFactory.h"
 #include <string>
 #include <cstring>
 #include <iomanip>
@@ -24,9 +25,10 @@ wxBEGIN_EVENT_TABLE(AppWindow, wxFrame)
 wxEND_EVENT_TABLE()
 
 AppWindow::AppWindow() : 
-	wxFrame(nullptr, wxID_ANY, "Calculator", wxPoint(400, 200), wxSize(500,500) )
+	 wxFrame(nullptr, wxID_ANY, "Calculator", wxPoint(400, 200), wxSize(500,500) )
 {
-	 Zero = new wxButton(this, 0, "0", wxPoint(100, 350), wxSize(50, 50));
+	 /*Zero = new wxButton(this, 0, "0", wxPoint(100, 350), wxSize(50, 50));*/
+	 Zero = ButtonFactory::CreateZeroButton(this);
 	 One = new wxButton(this, 1,"1", wxPoint(25,275), wxSize(50,50));
 	 Two = new wxButton(this, 2,"2", wxPoint(100,275), wxSize(50,50));
 	 Three = new wxButton(this, 3,"3", wxPoint(175,275), wxSize(50,50));
@@ -43,6 +45,7 @@ AppWindow::AppWindow() :
 	 Divide = new wxButton(this, 104,"/", wxPoint(350,200), wxSize(50,50));
 	 Equal = new wxButton(this, 105,"=", wxPoint(175,350), wxSize(50,50));
 	 Clear = new wxButton(this, 106,"C", wxPoint(25,350), wxSize(50,50));
+	 PlusAndMin = new wxButton(this, 106, "+/-", wxPoint(275, 350), wxSize(50, 50));
 
 	 Lparetheses = new wxButton(this, 201,"(", wxPoint(275,275), wxSize(50,50));
 	 Rparetheses = new wxButton(this, 202,")", wxPoint(350,275), wxSize(50,50));

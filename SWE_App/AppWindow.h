@@ -21,6 +21,7 @@ class AppWindow : public wxFrame
 	wxButton* Divide = nullptr;
 	wxButton* Equal = nullptr;
 	wxButton* Clear = nullptr;
+	wxButton* PlusAndMin = nullptr;
 
 	wxButton* Lparetheses = nullptr;
 	wxButton* Rparetheses = nullptr;
