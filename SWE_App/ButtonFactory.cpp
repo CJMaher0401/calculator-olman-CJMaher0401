@@ -3,6 +3,8 @@
 #include "CalculatorApp.h"
 #include "wx/wx.h"
 
+using namespace std;
+
 wxButton* ButtonFactory::CreateZeroButton(wxWindow *window)
 {
 	wxButton* Zero = new wxButton(window, 0, "0", wxPoint(100, 350), wxSize(50, 50));

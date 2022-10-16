@@ -1,6 +1,10 @@
 #pragma once
 
 #include"wx/wx.h"
+#include <vector>
+#include <string>
+
+using namespace std;
 
 class AppWindow : public wxFrame
 {
@@ -32,19 +36,23 @@ class AppWindow : public wxFrame
 
 	wxTextCtrl* Textbox = nullptr;
 
-	int Num1 = 0;
-	int Num2 = 0;
-	bool CurNum = true;
-	
-	int Operator;
-	int Sum;
-	float SumRem;
+	vector <string> Inputs;
+	int CurrElement;
+	float Sum;
+	bool NewNum = true;
+	float Operator;
 
-	void OnButtonClicked(wxCommandEvent& evt);
+	/*bool CurNum;
+	int Operator;
+	int Num1;
+	int Num2;
+	float SumRem;
+	void OnButtonClicked(wxCommandEvent& evt);*/
 
 	wxDECLARE_EVENT_TABLE();
 
 public:
+	void OnButtonClicked(wxCommandEvent& evt);
 	AppWindow();
 
 	

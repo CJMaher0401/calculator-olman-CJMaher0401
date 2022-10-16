@@ -32,6 +32,8 @@ public:
 	static wxButton* CreateCOSButton(wxWindow *window);
 	static wxButton* CreateTANButton(wxWindow *window);
 
+	wxDECLARE_EVENT_TABLE();
+
 	ButtonFactory(wxWindow *window);
 
 };

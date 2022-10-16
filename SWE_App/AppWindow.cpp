@@ -22,6 +22,13 @@ wxBEGIN_EVENT_TABLE(AppWindow, wxFrame)
 	EVT_BUTTON(104, OnButtonClicked)
 	EVT_BUTTON(105, OnButtonClicked)
 	EVT_BUTTON(106, OnButtonClicked)
+	EVT_BUTTON(107, OnButtonClicked)
+	EVT_BUTTON(201, OnButtonClicked)
+	EVT_BUTTON(202, OnButtonClicked)
+	EVT_BUTTON(203, OnButtonClicked)
+	EVT_BUTTON(204, OnButtonClicked)
+	EVT_BUTTON(205, OnButtonClicked)
+	EVT_BUTTON(206, OnButtonClicked)
 wxEND_EVENT_TABLE()
 
 AppWindow::AppWindow() : 
@@ -58,164 +65,206 @@ AppWindow::AppWindow() :
 }
 
 void AppWindow::OnButtonClicked(wxCommandEvent& evt)
-{
+{	
 	if (evt.GetId() == 0)
 	{
 		Textbox->AppendText("0");
 		evt.Skip();
-		if (CurNum == true)
+		if (NewNum == true)
 		{
-			Num1 = (Num1 * 10);
+			Inputs.push_back("0");
+			NewNum = false;
 		}
 		else
 		{
-			Num2 = (Num2 * 10);
+			CurrElement = Inputs.size() - 1;
+			int temp = stoi(Inputs[CurrElement]);
+			temp = (temp * 10);
+			Inputs[CurrElement] = to_string(temp);
 		}
 	}
 	if (evt.GetId() == 1)
 	{
 		Textbox->AppendText("1");
 		evt.Skip();
-		if (CurNum == true)
+		if (NewNum == true)
 		{
-			Num1 = (Num1 * 10) + 1;
+			Inputs.push_back("1");
+			NewNum = false;
 		}
 		else
 		{
-			Num2 = (Num2 * 10) + 1;
+			CurrElement = Inputs.size() - 1;
+			int temp = stoi(Inputs[CurrElement]);
+			temp = (temp * 10) + 1;
+			Inputs[CurrElement] = to_string(temp);
 		}
 	}
 	if (evt.GetId() == 2)
 	{
 		Textbox->AppendText("2");
 		evt.Skip();
-		if (CurNum == true)
+		if (NewNum == true)
 		{
-			Num1 = (Num1 * 10) + 2;
+			Inputs.push_back("2");
+			NewNum = false;
 		}
 		else
 		{
-			Num2 = (Num2 * 10) + 2;
+			CurrElement = Inputs.size() - 1;
+			int temp = stoi(Inputs[CurrElement]);
+			temp = (temp * 10) + 2;
+			Inputs[CurrElement] = to_string(temp);
 		}
+			
 	}
 	if (evt.GetId() == 3)
 	{
 		Textbox->AppendText("3");
 		evt.Skip();
-		if (CurNum == true)
+		if (NewNum == true)
 		{
-			Num1 = (Num1 * 10) + 3;
+			Inputs.push_back("3");
+			NewNum = false;
 		}
 		else
 		{
-			Num2 = (Num2 * 10) + 3;
+			CurrElement = Inputs.size() - 1;
+			int temp = stoi(Inputs[CurrElement]);
+			temp = (temp * 10) + 3;
+			Inputs[CurrElement] = to_string(temp);
 		}
 	}
 	if (evt.GetId() == 4)
 	{
 		Textbox->AppendText("4");
 		evt.Skip();
-		if (CurNum == true)
+		if (NewNum == true)
 		{
-			Num1 = (Num1 * 10) + 4;
+			Inputs.push_back("4");
+			NewNum = false;
 		}
 		else
 		{
-			Num2 = (Num2 * 10) + 4;
+			CurrElement = Inputs.size() - 1;
+			int temp = stoi(Inputs[CurrElement]);
+			temp = (temp * 10) + 4;
+			Inputs[CurrElement] = to_string(temp);
 		}
 	}
 	if (evt.GetId() == 5)
 	{
 		Textbox->AppendText("5");
 		evt.Skip();
-		if (CurNum == true)
+		if (NewNum == true)
 		{
-			Num1 = (Num1 * 10) + 5;
+			Inputs.push_back("5");
+			NewNum = false;
 		}
 		else
 		{
-			Num2 = (Num2 * 10) + 5;
+			CurrElement = Inputs.size() - 1;
+			int temp = stoi(Inputs[CurrElement]);
+			temp = (temp * 10) + 5;
+			Inputs[CurrElement] = to_string(temp);
 		}
 	}
 	if (evt.GetId() == 6)
 	{
 		Textbox->AppendText("6");
 		evt.Skip();
-		if (CurNum == true)
+		if (NewNum == true)
 		{
-			Num1 = (Num1 * 10) + 6;
+			Inputs.push_back("6");
+			NewNum = false;
 		}
 		else
 		{
-			Num2 = (Num2 * 10) + 6;
+			CurrElement = Inputs.size() - 1;
+			int temp = stoi(Inputs[CurrElement]);
+			temp = (temp * 10) + 6;
+			Inputs[CurrElement] = to_string(temp);
 		}
 	}
 	if (evt.GetId() == 7)
 	{
 		Textbox->AppendText("7");
 		evt.Skip();
-		if (CurNum == true)
+		if (NewNum == true)
 		{
-			Num1 = (Num1 * 10) + 7;
+			Inputs.push_back("7");
+			NewNum = false;
 		}
 		else
 		{
-			Num2 = (Num2 * 10) + 7;
+			CurrElement = Inputs.size() - 1;
+			int temp = stoi(Inputs[CurrElement]);
+			temp = (temp * 10) + 7;
+			Inputs[CurrElement] = to_string(temp);
 		}
 	}
 	if (evt.GetId() == 8)
 	{
 		Textbox->AppendText("8");
 		evt.Skip();
-		if (CurNum == true)
+		if (NewNum == true)
 		{
-			Num1 = (Num1 * 10) + 8;
+			Inputs.push_back("8");
+			NewNum = false;
 		}
 		else
 		{
-			Num2 = (Num2 * 10) + 8;
+			CurrElement = Inputs.size() - 1;
+			int temp = stoi(Inputs[CurrElement]);
+			temp = (temp * 10) + 8;
+			Inputs[CurrElement] = to_string(temp);
 		}
 	}
 	if (evt.GetId() == 9)
 	{
 		Textbox->AppendText("9");
 		evt.Skip();
-		if (CurNum == true)
+		if (NewNum == true)
 		{
-			Num1 = (Num1 * 10) + 9;
+			Inputs.push_back("9");
+			NewNum = false;
 		}
 		else
 		{
-			Num2 = (Num2 * 10) + 9;
+			CurrElement = Inputs.size() - 1;
+			int temp = stoi(Inputs[CurrElement]);
+			temp = (temp * 10) + 9;
+			Inputs[CurrElement] = to_string(temp);
 		}
 	}
 	if (evt.GetId() == 101)
 	{
 		Textbox->AppendText("+");
 		evt.Skip();
-		CurNum = false;
+		Inputs.push_back("+");
+		NewNum = true;	
 		Operator = 1;
 	}
 	if (evt.GetId() == 102)
 	{
 		Textbox->AppendText("-");
 		evt.Skip();
-		CurNum = false;
-		Operator = 2;
+		Inputs.push_back("-");
+		NewNum = true;
 	}
 	if (evt.GetId() == 103)
 	{
 		Textbox->AppendText("*");
 		evt.Skip();
-		CurNum = false;
-		Operator = 3;
+		Inputs.push_back("*");
+		NewNum = true;
 	}
 	if (evt.GetId() == 104)
 	{
 		Textbox->AppendText("/");
 		evt.Skip();
-		CurNum = false;
-		Operator = 4;
+		Inputs.push_back("/");
+		NewNum = true;
 	}
 	if (evt.GetId() == 105)
 	{
@@ -223,31 +272,109 @@ void AppWindow::OnButtonClicked(wxCommandEvent& evt)
 		evt.Skip();
 		if (Operator == 1)
 		{
-			Sum = Num1 + Num2;
-			Textbox->AppendText(std::to_string(Sum));
-		}
-		if (Operator == 2)
-		{
-			Sum = Num1 - Num2;
-			Textbox->AppendText(std::to_string(Sum));
-		}
-		if (Operator == 3)
-		{
-			Sum = Num1 * Num2;
-			Textbox->AppendText(std::to_string(Sum));
-		}
-		if (Operator == 4)
-		{
-			SumRem = ceilf(((float)Num1 / (float)Num2) * 100) / 100;
-			Textbox->AppendText(std::to_string(SumRem));
+			int a = stoi(Inputs[0]);
+			int b = stoi(Inputs[2]);
+			int c = stoi(Inputs[4]);
+			int sum = a + b + c;
+			Textbox->AppendText(to_string(sum));
 		}
 	}
 	if (evt.GetId() == 106)
 	{
-
+		NewNum = true;
 		Textbox->Clear();
-		Num1 = 0;
-		Num2 = 0;
-		CurNum = true;
+		Inputs.clear();
+	}
+	if (evt.GetId() == 107)
+	{
+		Textbox->AppendText("-");
+		evt.Skip();
+		Inputs.push_back("N");
+		NewNum = true;
+	}
+	if (evt.GetId() == 201)
+	{
+		Textbox->AppendText("(");
+		evt.Skip();
+		Inputs.push_back("(");
+		NewNum = true;
+	}
+	if (evt.GetId() == 202)
+	{
+		Textbox->AppendText(")");
+		evt.Skip();
+		Inputs.push_back(")");
+		NewNum = true;
+	}
+	if (evt.GetId() == 203)
+	{
+		Textbox->AppendText("MOD");
+		evt.Skip();
+		Inputs.push_back("M");
+		NewNum = true;
+	}
+	if (evt.GetId() == 204)
+	{
+		Textbox->AppendText("SIN");
+		evt.Skip();
+		Inputs.push_back("S");
+		NewNum = true;
+	}
+	if (evt.GetId() == 205)
+	{
+		Textbox->AppendText("COS");
+		evt.Skip();
+		Inputs.push_back("C");
+		NewNum = true;
+	}
+	if (evt.GetId() == 206)
+	{
+		Textbox->AppendText("TAN");
+		evt.Skip();
+		Inputs.push_back("T");
+		NewNum = true;
 	}
 }
+
+/*wxString NumEntered = Textbox->GetValue();
+string Num = string(NumEntered.mb_str());
+for (int i = 0; i < Num.length(); i++)
+{
+	char CurChar = Num[i];
+	int First = Num[i];
+
+	if (isdigit(CurChar))
+	{
+		Inputs[i] = First;
+	}
+	else
+	{
+		if (isdigit(CurChar) == 0)
+		{
+			Inputs[i].push_back(CurChar);
+		}
+		string NewNum = Num.substr(First, i - First);
+		Inputs.push_back(NewNum);
+	}*/
+
+	/*Inputs[i].push_back(CurIndex);*/
+	/*if (isdigit(Num[i]))
+	{
+		char CurIndex = Num[i];
+		char Number = Inputs[i][CurIndex];
+		Inputs[i].push_back(CurIndex);
+
+		if (isdigit(Num[i] == false))
+		{
+			char CurOpIndex = Num[i];
+			Inputs[i].push_back(CurOpIndex);
+		}
+
+		string NewNum = Inputs[i].substr(CurIndex, i - CurIndex);
+		Inputs.push_back(NewNum);
+
+
+		char ActualNum = Num[i];
+		Inputs[i].push_back(ActualNum);
+		string Num = Inputs[i].substr(ActualNum, i - ActualNum);
+	}*/
