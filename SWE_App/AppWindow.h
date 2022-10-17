@@ -1,12 +1,12 @@
 #pragma once
 
-#include"wx/wx.h"
+#include "wx/wx.h"
 #include <vector>
 #include <string>
 
 using namespace std;
 
-class AppWindow : public wxFrame
+class AppWindow : public wxFrame 
 {
 	wxButton* Zero = nullptr;
 	wxButton* One = nullptr;

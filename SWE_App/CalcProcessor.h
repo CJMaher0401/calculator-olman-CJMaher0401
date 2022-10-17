@@ -16,8 +16,13 @@ public:
 	CalcProcessor(CalcProcessor& other) = delete;
 	CalcProcessor& operator=(CalcProcessor& other) = delete;
 
+
 	static CalcProcessor* GetInstance();
-	void ShuntYardAlgo(string inputs);
-	void ReversePolNotationAlgo(string inputs);
+	int CheckOperator(string operators);
+	int CheckIfFunction(string functions);
+	int CompareImportance(string operators);
+	vector<string> ShuntYardAlgo(vector<string> tokens);
+	double ReversePolNotationAlgo(vector<string> tokens);
+
 };
 
