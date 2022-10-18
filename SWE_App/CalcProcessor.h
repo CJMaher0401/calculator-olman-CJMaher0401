@@ -20,10 +20,10 @@ public:
 	static CalcProcessor* GetInstance();
 	
 	static bool CheckOperator(const string& OPtoken);
+	static bool CheckFunction(const string& FuncToken);
+	static bool CheckifParenthesis(const string& ParToken);
 	static bool CheckAssociation(const string& CurToken, const int& OP);
-	static bool CheckFunction(const string& token);
-	static bool CheckifParenthesis(const string& token);
-	static int CompareImportance(const string& token1, const string& token2);
+	static int CompareImportance(const string& Operator1, const string& Operator2);
 	static bool ShuntYardAlgo(const vector<string>& CalcInputs, const int EquationSize, vector<string> RPNtoOutput);
-	static float RPNtoDouble(vector<string> tokens);	
+	static float RPNinput2FloatOutput(vector<string> RPNoutput);
 };
