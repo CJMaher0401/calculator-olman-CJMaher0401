@@ -274,13 +274,14 @@ void AppWindow::OnButtonClicked(wxCommandEvent& evt)
 
 
 		
-		wxString NumEntered = Textbox->GetValue();
+		/*wxString NumEntered = Textbox->GetValue();
 		string Num = string(NumEntered.mb_str());
-		vector<string> tokens = CalcProcessor::getExpressionTokens(Num);
+		vector<string> tokens = CalcProcessor::getExpressionTokens(Num);*/
 		vector<string> rpn;
-		CalcProcessor::ShuntYardAlgo(tokens, tokens.size(), rpn);
-		double ans = CalcProcessor::RPNtoDouble(rpn);
+		CalcProcessor::ShuntYardAlgo(Inputs, Inputs.size(), rpn);
+		float ans = CalcProcessor::RPNtoDouble(rpn);
 		Textbox->AppendText(to_string(ans));
+
 
 		/*vector<string> tokens = CalcProcessor::ShuntYardAlgo(Inputs);*/
 	

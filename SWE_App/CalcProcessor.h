@@ -19,11 +19,11 @@ public:
 
 	static CalcProcessor* GetInstance();
 	
-	static bool CheckOperator(const string& token);
-	static bool CheckAssociation(const string& token, const int& type);
+	static bool CheckOperator(const string& OPtoken);
+	static bool CheckAssociation(const string& CurToken, const int& OP);
+	static bool CheckFunction(const string& token);
+	static bool CheckifParenthesis(const string& token);
 	static int CompareImportance(const string& token1, const string& token2);
 	static bool ShuntYardAlgo(const vector<string>& CalcInputs, const int EquationSize, vector<string> RPNtoOutput);
-	static double RPNtoDouble(vector<string> tokens);
-	
+	static float RPNtoDouble(vector<string> tokens);	
 };
-
