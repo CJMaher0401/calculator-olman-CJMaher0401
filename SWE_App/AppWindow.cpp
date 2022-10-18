@@ -272,6 +272,19 @@ void AppWindow::OnButtonClicked(wxCommandEvent& evt)
 		Textbox->AppendText("=");
 		evt.Skip();
 
+
+		
+		wxString NumEntered = Textbox->GetValue();
+		string Num = string(NumEntered.mb_str());
+		vector<string> tokens = CalcProcessor::getExpressionTokens(Num);
+		vector<string> rpn;
+		CalcProcessor::ShuntYardAlgo(tokens, tokens.size(), rpn);
+		double ans = CalcProcessor::RPNtoDouble(rpn);
+		Textbox->AppendText(to_string(ans));
+
+		/*vector<string> tokens = CalcProcessor::ShuntYardAlgo(Inputs);*/
+	
+
 		//if (Operator == 1)
 		//{
 		//	int a = stoi(Inputs[0]);

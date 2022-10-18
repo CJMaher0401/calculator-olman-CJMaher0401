@@ -3,6 +3,7 @@
 #include "AppWindow.h"
 #include <vector>
 #include <string>
+#include <map>
 
 using namespace std;
 
@@ -16,13 +17,13 @@ public:
 	CalcProcessor(CalcProcessor& other) = delete;
 	CalcProcessor& operator=(CalcProcessor& other) = delete;
 
-
 	static CalcProcessor* GetInstance();
-	int CheckOperator(string operators);
-	int CheckIfFunction(string functions);
-	int CompareImportance(string operators);
-	vector<string> ShuntYardAlgo(vector<string> tokens);
-	double ReversePolNotationAlgo(vector<string> tokens);
-
+	
+	static bool CheckOperator(const string& token);
+	static bool CheckAssociation(const string& token, const int& type);
+	static int CompareImportance(const string& token1, const string& token2);
+	static bool ShuntYardAlgo(const vector<string>& CalcInputs, const int EquationSize, vector<string> RPNtoOutput);
+	static double RPNtoDouble(vector<string> tokens);
+	
 };
 
