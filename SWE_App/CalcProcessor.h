@@ -24,6 +24,6 @@ public:
 	static bool CheckifParenthesis(const string& ParToken);
 	static bool CheckAssociation(const string& CurToken, const int& OP);
 	static int CompareImportance(const string& Operator1, const string& Operator2);
-	static bool ShuntYardAlgo(const vector<string>& CalcInputs, const int EquationSize, vector<string> RPNtoOutput);
+	static bool ShuntYardAlgo(const vector<string>& CalcInputs, const int EquationSize, vector<string>& RPNtoOutput);
 	static float RPNinput2FloatOutput(vector<string> RPNoutput);
 };

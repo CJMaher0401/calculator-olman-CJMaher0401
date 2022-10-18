@@ -38,13 +38,13 @@ const OperatorImportance operators(OperatorAssociation, OperatorAssociation + si
 //I create a method to check which operator I am dealing with so it can be used correctly inside the Shunting Yard Algorithm.
 bool CalcProcessor::CheckOperator(const string& OPtoken)
 {
-    return OPtoken == "+" || OPtoken == "-" || OPtoken == "*" || OPtoken == "/" || OPtoken == "%";
+    return OPtoken == "+" || OPtoken == "-" || OPtoken == "*" || OPtoken == "/";
 }
 
 //Here I just want to check if a function was inputed by reading what function was outputed to our vector in AppWindow.cpp
 bool CalcProcessor::CheckFunction(const string& FuncToken)
 {
-    return FuncToken == "S" || FuncToken == "C" || FuncToken == "T";
+    return FuncToken == "M" || FuncToken == "S" || FuncToken == "C" || FuncToken == "T";
 }
 
 //Here I just want to check if the current token we are looking at is a parenthesis for the last while loop in my shunting yard algorithm
@@ -76,7 +76,7 @@ int CalcProcessor::CompareImportance(const string& Operator1, const string& Oper
 }
 
 //Here is my entire shunting yard algorithm.
-bool CalcProcessor::ShuntYardAlgo(const vector<string>& CalcInputs, const int EquationSize, vector<string> RPNtoOutput)
+bool CalcProcessor::ShuntYardAlgo(const vector<string>& CalcInputs, const int EquationSize, vector<string>& RPNtoOutput)
 {
 	bool EquationToRPN = true;
 
@@ -104,8 +104,8 @@ bool CalcProcessor::ShuntYardAlgo(const vector<string>& CalcInputs, const int Eq
 				// So while there is an operator token at the top of the stack AND    
 				// either operator1 is left-associative AND its importance is equal to that of operator2,    
           		// OR operator1 has precedence less than that of o2 ->
-				while((CheckAssociation(operator1, 0) && CompareImportance(operator1, operator2) == 0 ||
-					(CompareImportance(operator1, operator2) < 0)))
+				while(CheckOperator(operator2) && ( (CheckAssociation(operator1, 0) && CompareImportance(operator1, operator2) == 0 )||
+					 (CompareImportance(operator1, operator2) < 0) ) )
 				{
 					//-> pop operator2 off the stack and into the output
 					RPNstack.pop();

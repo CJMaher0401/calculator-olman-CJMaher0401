@@ -273,27 +273,10 @@ void AppWindow::OnButtonClicked(wxCommandEvent& evt)
 		evt.Skip();
 
 
-		
-		/*wxString NumEntered = Textbox->GetValue();
-		string Num = string(NumEntered.mb_str());
-		vector<string> tokens = CalcProcessor::getExpressionTokens(Num);*/
 		vector<string> rpn;
 		CalcProcessor::ShuntYardAlgo(Inputs, Inputs.size(), rpn);
-		float ans = CalcProcessor::RPNtoDouble(rpn);
+		float ans = CalcProcessor::RPNinput2FloatOutput(rpn);
 		Textbox->AppendText(to_string(ans));
-
-
-		/*vector<string> tokens = CalcProcessor::ShuntYardAlgo(Inputs);*/
-	
-
-		//if (Operator == 1)
-		//{
-		//	int a = stoi(Inputs[0]);
-		//	int b = stoi(Inputs[2]);
-		//	int c = stoi(Inputs[4]);
-		//	int sum = a + b + c;
-		//	Textbox->AppendText(to_string(sum));
-		//}
 
 	}
 	if (evt.GetId() == 106)
@@ -327,7 +310,7 @@ void AppWindow::OnButtonClicked(wxCommandEvent& evt)
 	{
 		Textbox->AppendText("MOD");
 		evt.Skip();
-		Inputs.push_back("%");
+		Inputs.push_back("M");
 		NewNum = true;
 	}
 	if (evt.GetId() == 204)
