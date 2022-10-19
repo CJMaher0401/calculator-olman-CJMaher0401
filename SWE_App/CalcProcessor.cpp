@@ -29,7 +29,7 @@ const OperatorImportance::value_type OperatorAssociation[] =
 	OperatorImportance::value_type("-", pair<int,int>(0, 0)),
 	OperatorImportance::value_type("*", pair<int,int>(5, 0)),
 	OperatorImportance::value_type("/", pair<int,int>(5, 0)),
-    OperatorImportance::value_type("%", pair<int,int>(5, 0)),
+    OperatorImportance::value_type("%", pair<int,int>(5, 0))
 };
 
 //Here I create a variable assoicated with our map that will look at the value in our map so I can use the .find
