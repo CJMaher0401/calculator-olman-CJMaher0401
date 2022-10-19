@@ -27,3 +27,4 @@ public:
 	static bool ShuntYardAlgo(const vector<string>& CalcInputs, const int EquationSize, vector<string>& RPNtoOutput);
 	static float RPNinput2FloatOutput(vector<string> RPNoutput);
 };
+

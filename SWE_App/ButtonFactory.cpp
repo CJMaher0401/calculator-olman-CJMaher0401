@@ -121,7 +121,7 @@ wxButton* ButtonFactory::CreateRPAREButton(wxWindow *window)
 
 wxButton* ButtonFactory::CreateMODButton(wxWindow *window)
 {
-	wxButton* Mod = new wxButton(window, 203, "Mod", wxPoint(425, 125), wxSize(50, 50));
+	wxButton* Mod = new wxButton(window, 203, "%", wxPoint(425, 125), wxSize(50, 50));
 	return Mod;
 }
 

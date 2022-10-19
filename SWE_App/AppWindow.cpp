@@ -308,9 +308,9 @@ void AppWindow::OnButtonClicked(wxCommandEvent& evt)
 	}
 	if (evt.GetId() == 203)
 	{
-		Textbox->AppendText("MOD");
+		Textbox->AppendText("%");
 		evt.Skip();
-		Inputs.push_back("M");
+		Inputs.push_back("%");
 		NewNum = true;
 	}
 	if (evt.GetId() == 204)
@@ -335,46 +335,3 @@ void AppWindow::OnButtonClicked(wxCommandEvent& evt)
 		NewNum = true;
 	}
 }
-
-/*wxString NumEntered = Textbox->GetValue();
-string Num = string(NumEntered.mb_str());
-for (int i = 0; i < Num.length(); i++)
-{
-	char CurChar = Num[i];
-	int First = Num[i];
-
-	if (isdigit(CurChar))
-	{
-		Inputs[i] = First;
-	}
-	else
-	{
-		if (isdigit(CurChar) == 0)
-		{
-			Inputs[i].push_back(CurChar);
-		}
-		string NewNum = Num.substr(First, i - First);
-		Inputs.push_back(NewNum);
-	}*/
-
-	/*Inputs[i].push_back(CurIndex);*/
-	/*if (isdigit(Num[i]))
-	{
-		char CurIndex = Num[i];
-		char Number = Inputs[i][CurIndex];
-		Inputs[i].push_back(CurIndex);
-
-		if (isdigit(Num[i] == false))
-		{
-			char CurOpIndex = Num[i];
-			Inputs[i].push_back(CurOpIndex);
-		}
-
-		string NewNum = Inputs[i].substr(CurIndex, i - CurIndex);
-		Inputs.push_back(NewNum);
-
-
-		char ActualNum = Num[i];
-		Inputs[i].push_back(ActualNum);
-		string Num = Inputs[i].substr(ActualNum, i - ActualNum);
-	}*/

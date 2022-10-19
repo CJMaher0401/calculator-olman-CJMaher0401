@@ -28,7 +28,8 @@ const OperatorImportance::value_type OperatorAssociation[] =
 	OperatorImportance::value_type("+", pair<int,int>(0, 0)),
 	OperatorImportance::value_type("-", pair<int,int>(0, 0)),
 	OperatorImportance::value_type("*", pair<int,int>(5, 0)),
-	OperatorImportance::value_type("/", pair<int,int>(5, 0))
+	OperatorImportance::value_type("/", pair<int,int>(5, 0)),
+    OperatorImportance::value_type("%", pair<int,int>(5, 0)),
 };
 
 //Here I create a variable assoicated with our map that will look at the value in our map so I can use the .find
@@ -38,6 +39,11 @@ const OperatorImportance operators(OperatorAssociation, OperatorAssociation + si
 //I create a method to check which operator I am dealing with so it can be used correctly inside the Shunting Yard Algorithm.
 bool CalcProcessor::CheckOperator(const string& OPtoken)
 {
+    if (OPtoken == "%")
+    {
+        return OPtoken == "%";
+    }
+    else
     return OPtoken == "+" || OPtoken == "-" || OPtoken == "*" || OPtoken == "/";
 }
 
@@ -206,99 +212,100 @@ float CalcProcessor::RPNinput2FloatOutput(vector<string> RPNoutput)
     stack<string> RPNstack;
 
         //while there is a token to look at loop through and check the token
-        for (int i = 0; i < (int)RPNoutput.size(); i++)
+    for (int i = 0; i < (int)RPNoutput.size(); i++)
+    {
+        //creating a variable to represent the current token we are looking at
+        const string CurToken = RPNoutput[i];
+
+        //So here I want to check if the current token we are looking at is not a function nor an operator
+        if (!CheckOperator(CurToken) && !CheckFunction(CurToken))
         {
-            //creating a variable to represent the current token we are looking at
-            const string CurToken = RPNoutput[i];
+            //if it is not a function or operator push the current number to the stack
+            RPNstack.push(CurToken);
+        }
+        //if the current token is an operator then we want to go into this loop and perform that operators correct function
+        else if (CheckOperator(CurToken))
+        {
+            //Here I just want to create a variable that represent the final answer of the two numbers we will be pulling from the stack
+            float FinalAnswer = 0.0;
 
-            //So here I want to check if the current token we are looking at is not a function nor an operator
-            if (!CheckOperator(CurToken) && !CheckFunction(CurToken))
+            //all I am doing here is figuring out whatever number is in the stack I want to pop it out and turn it into a float
+            //so it can be used in the equations as needed
+            const string StackVal2 = RPNstack.top();
+            RPNstack.pop();
+            const float NumValue2 = strtof(StackVal2.c_str(), NULL);
+
+            //if the RPN stack is not empty then we want to continue through the loop and find the next number in the stack
+            //as well as preform the correct function for those two numbers
+            if (!RPNstack.empty())
             {
-                //if it is not a function or operator push the current number to the stack
-                RPNstack.push(CurToken);
-            }
-            //if the current token is an operator then we want to go into this loop and perform that operators correct function
-            else if (CheckOperator(CurToken))
-            {
-                //Here I just want to create a variable that represent the final answer of the two numbers we will be pulling from the stack
-                float FinalAnswer = 0.0;
-
-                //all I am doing here is figuring out whatever number is in the stack I want to pop it out and turn it into a float
-                //so it can be used in the equations as needed
-                const string StackVal2 = RPNstack.top();
-                RPNstack.pop();
-                const float NumValue2 = strtof(StackVal2.c_str(), NULL);
-
-                //if the RPN stack is not empty then we want to continue through the loop and find the next number in the stack
-                //as well as preform the correct function for those two numbers
-                if (!RPNstack.empty())
-                {
-                    //doing the same thing as before, finding the next number in the stack, popping it out, then turning it into a float
-                    const string StackVal1 = RPNstack.top();
-                    RPNstack.pop();
-                    const float NumValue1 = strtof(StackVal1.c_str(), NULL);
-
-                    //if the current token equals a specific operator then I preform the specific function on those numbers
-                    if (CurToken == "+")
-                    {
-                        FinalAnswer = NumValue1 + NumValue2;
-                    }
-                    else if (CurToken == "-")
-                    {
-                        FinalAnswer = NumValue1 - NumValue2;
-                    }
-                    else if (CurToken == "*")
-                    {
-                        FinalAnswer = NumValue1 * NumValue2;
-                    }
-                    else if (CurToken == "/")
-                    {
-                        FinalAnswer = NumValue1 / NumValue2;
-                    }
-                    else //this is where I preform my mod function as I need two values to get the remainder
-                    {
-                        FinalAnswer = (int)NumValue1 % (int)NumValue2;
-                    }
-                }
-                //All we are doing here is assigning a value for our float answer which is equal to our final answer
-                //and then pushing that answer into the stack as a string
-                ostringstream FloatAnswer;
-                FloatAnswer << FinalAnswer;
-                RPNstack.push(FloatAnswer.str());
-            }
-            //if the current token is a function then we need to preform that function
-            else
-            {
-                //same thing as the first loop I want to create a variable that represents my final answer after a function is preformed
-                float FinalAnswer;
-
-                //The only thing that is different here is I don't need NumValue2 as my function will preform all the basic order of operations inside
-                //the parenthesis of my function first in my first loop, which will then leave me with the sole number I want to use in my function
+                //doing the same thing as before, finding the next number in the stack, popping it out, then turning it into a float
                 const string StackVal1 = RPNstack.top();
                 RPNstack.pop();
                 const float NumValue1 = strtof(StackVal1.c_str(), NULL);
 
-                //all I am doing here is checking which function was called then preforming the correct function in realtion to what the current token is
-                if (CurToken == "S")
+                //if the current token equals a specific operator then I preform the specific function on those numbers
+                if (CurToken == "+")
                 {
-                    FinalAnswer = sin(NumValue1);
+                    FinalAnswer = NumValue1 + NumValue2;
                 }
-                else if (CurToken == "C")
+                else if (CurToken == "-")
                 {
-                    FinalAnswer = cos(NumValue1);
+                    FinalAnswer = NumValue1 - NumValue2;
                 }
-                else // this is where I preform my function for tan
+                else if (CurToken == "*")
                 {
-                    FinalAnswer = tan(NumValue1);
+                    FinalAnswer = NumValue1 * NumValue2;
+                }
+                else if (CurToken == "/")
+                {
+                    FinalAnswer = NumValue1 / NumValue2;
+                }
+                else //where I preform my mod operator
+                {
+                    FinalAnswer = (int)NumValue1 % (int)NumValue2;
                 }
 
-                //doing the same thing I did in my first if check, just assigning the final answer to a variable then
-                //pushing it on to the stack as a string
-                ostringstream FloatAnswer;
-                FloatAnswer << FinalAnswer;
-                RPNstack.push(FloatAnswer.str());
             }
+            //All we are doing here is assigning a value for our float answer which is equal to our final answer
+            //and then pushing that answer into the stack as a string
+            ostringstream FloatAnswer;
+            FloatAnswer << FinalAnswer;
+            RPNstack.push(FloatAnswer.str());
         }
+        //if the current token is a function then we push it into this loop to preform the correct math for each function
+        else
+        {
+            //same thing as the first loop I want to create a variable that represents my final answer after a function is preformed
+            float FinalAnswer;
+
+            //The only thing that is different here is I don't need NumValue2 as my function will preform all the basic order of operations inside
+            //the parenthesis of my function first in my first loop, which will then leave me with the sole number I want to use in my function
+            const string StackVal1 = RPNstack.top();
+            RPNstack.pop();
+            const float NumValue1 = strtof(StackVal1.c_str(), NULL);
+
+            //all I am doing here is checking which function was called then preforming the correct function in realtion to what the current token is
+            if (CurToken == "S")
+            {
+                FinalAnswer = sin(NumValue1);
+            }
+            else if (CurToken == "C")
+            {
+                FinalAnswer = cos(NumValue1);
+            }
+            else // where I preform my tan function
+            {
+                FinalAnswer = tan(NumValue1);
+            }
+
+            //doing the same thing I did in my first if check, just assigning the final answer to a variable then
+            //pushing it on to the stack as a string
+            ostringstream FloatAnswer;
+            FloatAnswer << FinalAnswer;
+            RPNstack.push(FloatAnswer.str());
+        }
+    }
 
         //then last thing I do is take whatever string is in my stack and turn it into a float
         //so I can output the correct answer as an actual number.
