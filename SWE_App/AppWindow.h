@@ -42,13 +42,6 @@ class AppWindow : public wxFrame
 	bool NewNum = true;
 	float Operator;
 
-	/*bool CurNum;
-	int Operator;
-	int Num1;
-	int Num2;
-	float SumRem;
-	void OnButtonClicked(wxCommandEvent& evt);*/
-
 	wxDECLARE_EVENT_TABLE();
 
 public:
