@@ -272,12 +272,18 @@ void AppWindow::OnButtonClicked(wxCommandEvent& evt)
 		Textbox->AppendText("=");
 		evt.Skip();
 
-
+		bool MisMatch = false;
 		vector<string> rpn;
 		CalcProcessor::ShuntYardAlgo(Inputs, Inputs.size(), rpn);
-		float ans = CalcProcessor::RPNinput2FloatOutput(rpn);
-		Textbox->AppendText(to_string(ans));
-
+		if (MisMatch == CalcProcessor::ShuntYardAlgo(Inputs, Inputs.size(), rpn))
+		{
+			Textbox->AppendText("Somwething is wrong with your Equation, Press C and try again");
+		}
+		else
+		{
+			float ans = CalcProcessor::RPNinput2FloatOutput(rpn);
+			Textbox->AppendText(to_string(ans));
+		}
 	}
 	if (evt.GetId() == 106)
 	{
@@ -289,7 +295,7 @@ void AppWindow::OnButtonClicked(wxCommandEvent& evt)
 	{
 		Textbox->AppendText("-");
 		evt.Skip();
-		Inputs.push_back("N");
+		Inputs.push_back("-");
 		NewNum = true;
 	}
 	if (evt.GetId() == 201)

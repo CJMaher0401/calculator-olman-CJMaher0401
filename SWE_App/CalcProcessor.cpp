@@ -261,11 +261,10 @@ float CalcProcessor::RPNinput2FloatOutput(vector<string> RPNoutput)
                 {
                     FinalAnswer = NumValue1 / NumValue2;
                 }
-                else //where I preform my mod operator
+                else
                 {
                     FinalAnswer = (int)NumValue1 % (int)NumValue2;
                 }
-
             }
             //All we are doing here is assigning a value for our float answer which is equal to our final answer
             //and then pushing that answer into the stack as a string
