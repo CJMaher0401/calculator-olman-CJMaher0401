@@ -4,6 +4,7 @@
 #include <cstring>
 #include <iomanip>
 #include <math.h>
+#include "CalcProcessor.h"
 
 wxBEGIN_EVENT_TABLE(AppWindow, wxFrame)
 	EVT_BUTTON(0, OnButtonClicked)
@@ -270,14 +271,13 @@ void AppWindow::OnButtonClicked(wxCommandEvent& evt)
 	{
 		Textbox->AppendText("=");
 		evt.Skip();
-		if (Operator == 1)
-		{
-			int a = stoi(Inputs[0]);
-			int b = stoi(Inputs[2]);
-			int c = stoi(Inputs[4]);
-			int sum = a + b + c;
-			Textbox->AppendText(to_string(sum));
-		}
+
+
+		vector<string> rpn;
+		CalcProcessor::ShuntYardAlgo(Inputs, Inputs.size(), rpn);
+		float ans = CalcProcessor::RPNinput2FloatOutput(rpn);
+		Textbox->AppendText(to_string(ans));
+
 	}
 	if (evt.GetId() == 106)
 	{
@@ -308,28 +308,28 @@ void AppWindow::OnButtonClicked(wxCommandEvent& evt)
 	}
 	if (evt.GetId() == 203)
 	{
-		Textbox->AppendText("MOD");
+		Textbox->AppendText("%");
 		evt.Skip();
-		Inputs.push_back("M");
+		Inputs.push_back("%");
 		NewNum = true;
 	}
 	if (evt.GetId() == 204)
 	{
-		Textbox->AppendText("SIN");
+		Textbox->AppendText("Sin");
 		evt.Skip();
 		Inputs.push_back("S");
 		NewNum = true;
 	}
 	if (evt.GetId() == 205)
 	{
-		Textbox->AppendText("COS");
+		Textbox->AppendText("Cos");
 		evt.Skip();
 		Inputs.push_back("C");
 		NewNum = true;
 	}
 	if (evt.GetId() == 206)
 	{
-		Textbox->AppendText("TAN");
+		Textbox->AppendText("Tan");
 		evt.Skip();
 		Inputs.push_back("T");
 		NewNum = true;
