@@ -233,6 +233,17 @@ float CalcProcessor::RPNinput2FloatOutput(vector<string> RPNoutput)
             const string StackVal2 = RPNstack.top();
             RPNstack.pop();
             const float NumValue2 = strtof(StackVal2.c_str(), NULL);
+            
+            //this is where I assign numbers to negative values, cause if the current token is "-" and we haven't got our second operator token yet I want to make sure
+            //that number turns into a negative number
+            if (CurToken == "-")
+            {
+                FinalAnswer = (NumValue2 * -1);
+            }
+            else
+            {
+                FinalAnswer = NumValue2;
+            }           
 
             //if the RPN stack is not empty then we want to continue through the loop and find the next number in the stack
             //as well as preform the correct function for those two numbers
