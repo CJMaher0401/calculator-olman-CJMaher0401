@@ -47,7 +47,7 @@ class AppWindow : public wxFrame
 public:
 	void OnButtonClicked(wxCommandEvent& evt);
 	AppWindow();
-
+	
 	
 };
 
