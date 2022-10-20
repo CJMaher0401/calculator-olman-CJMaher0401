@@ -272,6 +272,18 @@ void AppWindow::OnButtonClicked(wxCommandEvent& evt)
 		Textbox->AppendText("=");
 		evt.Skip();
 
+		/*Inputs[0];
+		Inputs[1];
+		Inputs[2];
+		Inputs[3];
+		Inputs[4];
+		Inputs[5];
+		Inputs[6];
+		Inputs[7];
+		Inputs[8];
+		Inputs[9];
+		Inputs[10];*/
+
 		bool MisMatch = false;
 		vector<string> rpn;
 		CalcProcessor::ShuntYardAlgo(Inputs, Inputs.size(), rpn);
@@ -281,7 +293,7 @@ void AppWindow::OnButtonClicked(wxCommandEvent& evt)
 		}
 		else
 		{
-			float ans = CalcProcessor::RPNinput2FloatOutput(rpn);
+			double ans = CalcProcessor::RPNinput2FloatOutput(rpn);
 			Textbox->AppendText(to_string(ans));
 		}
 	}

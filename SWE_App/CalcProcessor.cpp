@@ -1,6 +1,5 @@
 #include "CalcProcessor.h"
 #include "AppWindow.h"
-#include "wx/wx.h"
 #include <iostream>
 #include <sstream>
 #include <list>
