@@ -289,7 +289,7 @@ void AppWindow::OnButtonClicked(wxCommandEvent& evt)
 	{
 		Textbox->AppendText("-");
 		evt.Skip();
-		Inputs.push_back("N");
+		Inputs.push_back("-");
 		NewNum = true;
 	}
 	if (evt.GetId() == 201)
